@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="initial-scale=1.0" />
+		<title>קישור לאישור קורונה בקונץ</title>
+	</head>
+
+	<style>
+		body {
+			direction: rtl;
+		}
+	</style>
+
+	<body>
+		<h2>קישור לאישור קורונה בקונץ</h2>
+		<label for="name">שם:</label><br />
+		<input type="text" id="name" /><br />
+		<label for="id">ת"ז:</label><br />
+		<input type="number" id="id" /><br />
+		<label for="pname"> שם הורה:</label><br />
+		<input type="text" id="pname" /><br />
+		<label for="pid">ת"ז הורה:</label><br />
+		<input type="number" id="pid" " /><br />
+		<button onclick="submit()">קבל קישור</button> <br />
+		<p style="direction: ltr"><code id="link"></code></p>
+	</body>
+
+	<script defer>
+		function submit() {
+			const formURL =
+				"https://docs.google.com/forms/d/e/1FAIpQLSfKBRvSR0Y5WxDy5P6Bf2voSNAjvTYf65h64nuRZdC3vJyY_A/viewform";
+
+			const myName = document.getElementById("name").value;
+			const myId = document.getElementById("id").value;
+			const parentName = document.getElementById("pname").value;
+			const parentId = document.getElementById("pid").value;
+
+			const datamap = [
+				"entry.1633097918=" + myName,
+				"entry.153952564=" + myId,
+				"entry.1502527623=מאשר",
+				"entry.2035760450=מאשר",
+				"entry.829622481=מאשר",
+				"entry.622664319=" + parentName,
+				"entry.1895665904=" + parentId,
+			];
+
+			const prefillUrl = formURL + "?" + datamap.join("&");
+
+			const output = document.getElementById("link");
+			output.innerHTML = prefillUrl;
+			console.log(prefillUrl);
+		}
+	</script>
+</html>
